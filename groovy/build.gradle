@@ -1,0 +1,20 @@
+
+apply plugin:'groovy'
+
+dependencies {
+
+    groovy "org.codehaus.groovy:groovy-all:2.0.5"
+
+ /* I want to be able to use Clojure, Scala and Java in my
+	Groovy code :-) */
+	compile project(":clojure")
+	compile project(":scala")
+	compile project(":java")
+
+    compile "org.codehaus.groovy:groovy-all:2.0.5"
+
+ /* For testing Spock...what else? */
+	compile "org.spockframework:spock-core:0.7-groovy-2.0"
+
+}
+

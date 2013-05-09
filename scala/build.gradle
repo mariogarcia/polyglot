@@ -1,0 +1,11 @@
+apply plugin: 'scala'
+
+dependencies {
+
+    compile 'org.scala-lang:scala-library:2.9.1'
+    testCompile 'org.scala-lang:scala-library:2.9.1'
+
+	scalaTools 'org.scala-lang:scala-compiler:2.9.1'
+	scalaTools 'org.scala-lang:scala-library:2.9.1'
+
+}

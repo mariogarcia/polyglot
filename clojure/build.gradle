@@ -1,0 +1,11 @@
+
+apply plugin: 'clojure'
+
+warnOnReflection = true
+aotCompile = true
+
+dependencies {
+
+    compile 'org.clojure:clojure:1.2.1'
+
+}
