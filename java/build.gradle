@@ -1,4 +1,5 @@
 apply plugin:'java'
+apply plugin:'cobertura'
 
 dependencies{
 	testCompile 'junit:junit:4.+'
