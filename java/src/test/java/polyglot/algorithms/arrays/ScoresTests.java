@@ -3,6 +3,7 @@ package polyglot.algorithms.arrays;
 import static org.junit.Assert.assertThat;
 import static org.hamcrest.CoreMatchers.is;
 import static org.hamcrest.CoreMatchers.not;
+import static org.hamcrest.CoreMatchers.notNullValue;
 import static org.hamcrest.CoreMatchers.containsString;
 
 import org.junit.Test;
@@ -65,4 +66,65 @@ public class ScoresTests {
       assertThat(scores.entries[scores.entries.length - 1].getName(),is("Player11"));
   }
 
+  @Test
+  public void testRemovingAGivenEntry() throws ScoresOutOfBoundsException {
+  
+      Scores scores = new Scores();
+
+      GameEntry john = new GameEntry("John",340);
+
+      scores.add(john);
+
+      GameEntry removedEntry = scores.remove(0);
+
+      assertThat(removedEntry,notNullValue());
+      assertThat(removedEntry.getName(),is("John"));
+      assertThat(scores.numEntries,is(0));
+  
+  }
+
+  @Test
+  public void testRemovingAndMovingAllRemainingEntriesToTheRight() throws ScoresOutOfBoundsException {
+  
+      Scores scores = new Scores();
+
+      GameEntry john = new GameEntry("John",340);
+      GameEntry peter = new GameEntry("Peter",450);
+      GameEntry linda = new GameEntry("Linda",250);
+
+      scores.add(john);
+      scores.add(peter);
+      scores.add(linda); 
+
+      assertThat(scores.numEntries,is(3));
+      assertThat(scores.remove(0).getName(),is("Peter"));
+      assertThat(scores.numEntries,is(2));
+      assertThat(scores.remove(0).getName(),is("John"));
+      assertThat(scores.numEntries,is(1));
+      assertThat(scores.remove(0).getName(),is("Linda"));
+      assertThat(scores.numEntries,is(0));
+
+  }
+
+  @Test(expected=ScoresOutOfBoundsException.class)
+  public void testExceptionThrownWhenAccessingOutOfBoundsUpper() throws ScoresOutOfBoundsException {
+  
+      Scores scores = new Scores();
+
+      GameEntry john = new GameEntry("John",340);
+
+      scores.remove(20);
+
+  }
+
+  @Test(expected=ScoresOutOfBoundsException.class)
+  public void testExceptionThrownWhenAccessingOutOfBoundsLower() throws ScoresOutOfBoundsException {
+  
+      Scores scores = new Scores();
+
+      GameEntry john = new GameEntry("John",340);
+
+      scores.remove(-20);
+
+  }
 }

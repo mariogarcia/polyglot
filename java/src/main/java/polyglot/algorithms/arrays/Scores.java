@@ -37,6 +37,25 @@ public class Scores {
 
   }
 
+  public GameEntry remove(int index) throws ScoresOutOfBoundsException {
+
+    if (index < 0 || index >= entries.length){
+      throw new ScoresOutOfBoundsException();
+    }
+
+    GameEntry removedEntry = entries[index];
+    numEntries--;
+    entries[index] = null;
+
+    int startPoint = index;
+
+    for (; startPoint < numEntries ; startPoint ++){
+       entries[startPoint] = entries[startPoint + 1];
+    }
+
+    return removedEntry;
+  }
+
   public String toString(){
       return Arrays.asList(entries).toString();
   }
