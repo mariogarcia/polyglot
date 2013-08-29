@@ -1,6 +1,8 @@
 package polyglot.algorithms.arrays;
 
 import static org.junit.Assert.assertThat;
+import static org.junit.Assert.assertArrayEquals;
+
 import static org.hamcrest.CoreMatchers.is;
 import static org.hamcrest.CoreMatchers.not;
 import static org.hamcrest.CoreMatchers.notNullValue;
@@ -127,4 +129,27 @@ public class ScoresTests {
       scores.remove(-20);
 
   }
+
+  @Test
+  public void testAscSortingAnArray(){
+
+      int[] randomNumbers = new int[]{19,30,18,31,20,22,7,1,4,3};
+      int arrayLength = randomNumbers.length;
+
+      for(int i = 0 ; i < arrayLength ; i++){
+          int current = randomNumbers[i];
+          int j = i - 1;
+          while((j >= 0) && (randomNumbers[j] > current)){
+              randomNumbers[j+1] = randomNumbers[j--];
+              randomNumbers[j+1] = current;
+          }
+      }
+
+      System.out.println(Arrays.toString(randomNumbers)); 
+
+      assertArrayEquals(randomNumbers,new int[]{1,3,4,7,18,19,20,22,30,31});
+
+  }
+
+
 }
