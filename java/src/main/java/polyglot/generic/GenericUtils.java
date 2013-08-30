@@ -2,8 +2,9 @@ package polyglot.generic;
 
 import java.lang.reflect.Method;
 
-public final class GenericUtils{
+public final class GenericUtils {
 
+  private GenericUtils(){ }
 
 	/**
 	 * This static method uses generics to create a generic way
