@@ -16,4 +16,12 @@ class UseClojureGromGroovySpec extends Specification{
       instanceMessage == "seat" 
       staticMessage == "SEAT"
 	}
+
+  def "Double a given number"(){
+    when:
+      def numbers = [1,2,3,4]
+      def doubleValue = new ClojureUtils().doubleThirdValue(numbers)
+    then:
+      doubleValue == 6
+  }
 }
