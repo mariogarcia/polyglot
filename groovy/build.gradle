@@ -18,3 +18,7 @@ dependencies {
 
 }
 
+
+task myRealm(type: org.gradle.example.GreetingTask) { 
+  username = "John"  
+}

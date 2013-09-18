@@ -1,4 +1,5 @@
 include 'clojure',
 		'scala',
 		'java',
-		'groovy'
+		'groovy',
+    'cpp'
